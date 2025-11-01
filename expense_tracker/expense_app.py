@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 st.title('💸EXPENSE TRACKER📱')
 st.header('Welcome to EXPENSE TRACKER💸')
-st.write("Built by Deva🤖")
+st.write("Built by ALFRED👾")
 st.markdown("___")
 
 #setting page config
