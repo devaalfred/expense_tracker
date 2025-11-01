@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 st.title('💸EXPENSE TRACKER📱')
 st.header('Welcome to EXPENSE TRACKER💸')
-st.write("Built by Deva😎")
+st.write("Built by Deva🤖")
 st.markdown("___")
 
 #setting page config
@@ -47,7 +47,7 @@ elif page == "VIEW EXPENSE":
     st.header("📋ALL EXPENSES")
     st.dataframe(df)
 
-    st.write("💰TOTAL SPENDINGS=$", df["Amount"].sum())
+    st.write("💰TOTAL SPENDINGS= RS", df["Amount"].sum())
     st.markdown("___")
 
 elif page=="ANALYTICS":
