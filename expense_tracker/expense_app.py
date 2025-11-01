@@ -53,16 +53,17 @@ elif page == "VIEW EXPENSE":
 elif page=="ANALYTICS":
     if not df.empty:
         st.header("📊EXPENSES BY CATEGORY")
-        category_summary = df.groupby("Category")["Amount"].sum()
+        category_summary1 = df.groupby("Date")["Amount"].sum()
         # bar chart present in streamlit so making use of it
         st.subheader("BAR CHART📊")
-        st.bar_chart(category_summary)
+        st.bar_chart(category_summary1)
         # for pie chart im using matplotlib
 
         st.subheader("💹PIE CHART")
+        category_summary2=df.groupby("Category")["Amount"].sum()
         fig, ax = plt.subplots(figsize=(4,2))  # it creates a matplotlib figure
-        ax.pie(category_summary,  # creates a pie chart
-               labels=category_summary.index,  # name of each pie
+        ax.pie(category_summary2,  # creates a pie chart
+               labels=category_summary2.index,  # name of each pie
                autopct='%1.1f%%',
                textprops={'fontsize':3})  # shows percentage of the chart
         ax.set_title("EXPENSES BY CATEGORY",fontsize=5)  # giving a title
