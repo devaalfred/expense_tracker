@@ -47,7 +47,7 @@ elif page == "VIEW EXPENSE":
     st.header("📋ALL EXPENSES")
     st.dataframe(df)
 
-    st.write("💰TOTAL SPENDINGS= RS", df["Amount"].sum())
+    st.write("💰TOTAL SPENDINGS= Rs~", df["Amount"].sum())
     st.markdown("___")
 
 elif page=="ANALYTICS":
