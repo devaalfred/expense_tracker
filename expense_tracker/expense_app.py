@@ -46,20 +46,25 @@ if page == "ADD EXPENSE":
 elif page == "VIEW EXPENSE":
     st.header("📋ALL EXPENSES")
     st.dataframe(df)
-
     st.write("💰TOTAL SPENDINGS= Rs~", df["Amount"].sum())
     st.markdown("___")
 
 elif page=="ANALYTICS":
     if not df.empty:
-        st.header("📊EXPENSES BY CATEGORY")
-        category_summary1 = df.groupby("Date")["Amount"].sum()
+        st.header("📊EXPENSES BY DATE")
+        df['Date'] = pd.to_datetime(df['Date'])
+        recent_df=df.sort_values('Date').tail(10)
+        category_summary1 = recent_df.groupby("Date")["Amount"].sum()
+
         # bar chart present in streamlit so making use of it
         st.subheader("BAR CHART📊")
         st.bar_chart(category_summary1)
-        # for pie chart im using matplotlib
+        st.markdown("___")
 
-        st.subheader("💹PIE CHART")
+
+        # for pie chart im using matplotlib
+        st.header("📈EXPENSES BY CATEGORY")
+        st.subheader("🔴PIE CHART")
         category_summary2=df.groupby("Category")["Amount"].sum()
         fig, ax = plt.subplots(figsize=(4,2))  # it creates a matplotlib figure
         ax.pie(category_summary2,  # creates a pie chart
@@ -68,8 +73,12 @@ elif page=="ANALYTICS":
                textprops={'fontsize':3})  # shows percentage of the chart
         ax.set_title("EXPENSES BY CATEGORY",fontsize=5)  # giving a title
         st.pyplot(fig)
+        st.markdown("___")
 
     else:  # if there is no data im telling to add the data
         st.info("ADD SOME EXPENSES TO SEE THE ANALYTICS!")
         st.markdown("___")
 
+
+
+# cd C:\Users\LENOVO\OneDrive\Documents\expense_tracker
